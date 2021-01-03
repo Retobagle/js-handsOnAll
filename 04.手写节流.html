@@ -51,6 +51,8 @@
 
 
         //move才是真正的事件逻辑代码
+        //move不是真正的事件函数，所以需要接受真正的事件函数传递过来的实参event
+        //这样才可以使用event事件对象，才是最符合的
         function move(e) {
             //以下是真正逻辑代码code
             console.log(1);
@@ -62,8 +64,9 @@
         oBox.onmousemove = throttle(move, 200);
 
 
-        function scroll() {
-            console.log("滚了")
+        function scroll(e) {
+            console.log("滚了");
+            console.log(e);
         }
         window.onscroll = throttle(scroll, 300)
 
@@ -80,7 +83,7 @@
                 }
                 lastTime = nowTime;
 
-                //arguments所在的函数就是真正的事件函数，所以拥有实参event  把event事件对象传递给fn move中就可以使用event事件对象了
+                //此函数是真正的事件函数，所以拥有实参event  把event事件对象传递给fn move中就可以使用event事件对象了
                 //fn(arguments[0]);
                 //改变了fn的this为事件触发的对象
                 fn.call(this, arguments[0])

@@ -14,7 +14,19 @@
     <script>
         var oIpt = document.getElementById('ipt');
 
+        /*
+        函数的节流(throttle)与防抖(debounce)
+            作用：为了节约函数的性能（让函数调用次数更少）
+            节流(throttle)：让函数在单位时间内只调用一次，第一次调用生效
+            应用场景：发送验证码按钮
+            防抖(debounce)：让函数在单位时间内只调用一次，最后一次调用生效
+            应用场景：搜索栏
+        */
+       
         //逻辑函数
+        //inputChange才是真正的事件逻辑代码
+        //inputChange不是真正的事件函数，所以需要接受真正的事件函数传递过来的实参event
+        //这样才可以使用event事件对象，才是最符合的
         function inputChange(e) {
             console.log("表单改变 请求数据");
             console.log(e);
