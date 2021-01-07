@@ -11,8 +11,8 @@
 <body>
     <script>
         function myInstanceof(A, B) {
-            var BPro = B.prototype;
-            var startA = A.__proto__;
+            let BPro = B.prototype;
+            let startA = A.__proto__;
 
             //如果while条件达不到，则说明B不在A的原型链上 返回false
             while (startA) {

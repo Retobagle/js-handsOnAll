@@ -73,11 +73,11 @@
         //节流函数(高阶函数)
         function throttle(fn, time) {
             //绑定事件的时候，先初始化一个上一次的事件
-            var lastTime = 0;
+            let lastTime = 0;
             //这个函数是事件触发的时候真正调用的事件函数
             return function () {
                 //这个函数就负责书写看门狗，当允许通过的时候 再调用真正的逻辑代码move
-                var nowTime = Date.now();
+                let nowTime = Date.now();
                 if (nowTime - lastTime < time) {
                     return;
                 }

@@ -26,10 +26,11 @@
         }
 
         //子类
-        function Cat(type, name, sex) {
+        function Cat(type, ...rest) {
             //构造函数继承
             //让父类构造函数中的this指向子类构造函数的this，子类构造函数的实例化对象就拥有了父类和子类的属性
-            Animal.call(this, name, sex)
+            // Animal.apply(this, [...rest])
+            Animal.call(this, ...rest)
             this.type = type;
         }
         //原型继承 
@@ -45,7 +46,7 @@
             console.log("抓老鼠");
         }
 
-        var cat1 = new Cat("加菲", "肥仔", '公');
+        let cat1 = new Cat("加菲", "肥仔", '公');
         console.log(cat1.name);
         cat1.do();
         cat1.speak();

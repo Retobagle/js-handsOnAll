@@ -9,7 +9,6 @@
 
 <body>
     <script>
-
         function Person(name, age) {
             this.name = name;
             this.age = age;
@@ -42,11 +41,11 @@
                 4.判断构造函数的返回值类型，如果是基本类型则正常返回obj，否则返回构造函数的返回值
         
         */
-        function myNew(Fn) {
+        function myNew(Fn, ...rest) {
             //1.声明一个对象obj，作为new的返回值（实例化对象）
-            var obj = {};
+            let obj = {};
             //2.调用构造函数，并且把构造函数的this指向obj
-            var FnReturn = Fn.apply(obj, Array.from(arguments).slice(1));
+            let FnReturn = Fn.apply(obj, rest);
             //3.修改obj的隐式原型为构造函数的显示原型
             obj.__proto__ = Fn.prototype;
             //4.判断构造函数的返回值类型，如果是基本类型则正常返回obj，否则返回构造函数的返回值
@@ -66,10 +65,9 @@
 
         }
 
-        var p1 = myNew(Person, "xiaowang", "18");
+        let p1 = myNew(Person, "xiaowang", "18");
         console.log(p1);
         console.log(p1.constructor);
-
     </script>
 </body>
 

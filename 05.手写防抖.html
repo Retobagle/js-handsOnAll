@@ -36,18 +36,19 @@
 
         //防抖函数
         function debounce(fn, time) {
-            var timer = null;
+            let timer = null;
             //事件函数
-            return function () {
+            return function (...rest) {
                 //每次触发的时候，先把上一次的计时器清掉，然后重新开始计时
                 clearTimeout(timer)
-                //在计时器中 arguments是不符合的，需要使用这个位置的arguments，需要保存起来
-                var arg = arguments;
-                //保存外边的this 在计时器函数中使用
-                var that = this;
+                // //在计时器中 arguments是不符合的，需要使用这个位置的arguments，需要保存起来
+                // var arg = arguments;
+                // //保存外边的this 在计时器函数中使用
+                // var that = this;
                 //每次触发事件，先不执行，要延迟一定的事件再执行
-                timer = setTimeout(function () {
-                    fn.call(that, arg[0]);
+                timer = setTimeout( ()=> {
+                    // fn.call(that, arg[0]);
+                    fn.call(this, ...rest);
                 }, time)
             }
         }
